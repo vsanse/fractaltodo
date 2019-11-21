@@ -7,13 +7,62 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.App-header {
-    background-color: #282c34;
-    min-height: 100vh;
+.primary {
+    color: $primary;
+}
+
+.primary-bg {
+    background-color: $primary;
+    color: #fff;
+    border-color: $primary;
+}
+
+.btn{
+    padding: 0.5rem;
+    text-transform: uppercase;
+    border-radius: 0.5rem;
+    color: $primary;
+    font-size: 0.875rem;
+    font-weight: 500;
+    box-shadow: $box-shadow;
+    border: 0.125rem solid $primary;
+    background: transparent;
+    &:hover{
+        background: $primary;
+        color: #000;
+        transition: 0.3s all ease;
+    }
+}
+
+.App {
+    background-color:$background;
+    max-height: 100vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: calc(10px + 2vmin);
+    font-size: calc(0.625rem + 2vmin);
     color: white;
+    &-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px;
+    }
+    main{
+        flex: 1;
+        overflow: auto;
+        display: flex;
+        align-items: center;
+        flex-flow: column;
+    }
+    .card{
+        width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $offwhite;
+        padding: 16px;
+        border-radius: 0.5rem;
+        box-shadow: $box-shadow;
+    }
 }

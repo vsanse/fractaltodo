@@ -1,0 +1,24 @@
+.todo {
+    &-wrapper {
+        display: flex;
+        width: 100%;
+        margin: 0 auto;
+        max-width: 85rem;
+        margin-top: 2rem;
+        flex-wrap: wrap;
+    }
+    &-pendings,
+    &-completed {
+        margin: 1rem 0.5rem;
+        padding: 0.5rem;
+        max-height: 30rem;
+        overflow: auto;
+        background: $containerbg;
+        border: 0.0625rem solid $primary;
+        box-shadow: $box-shadow;
+        border-radius: 0.5rem;
+        @include md{
+            flex: 1;
+        }
+    }
+}

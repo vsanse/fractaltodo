@@ -1,1 +1,5 @@
-@import "./partials/common";
+@import "depencencies/mixins";
+@import "depencencies/variables";
+
+@import "partials/common";
+@import "partials/todo";
