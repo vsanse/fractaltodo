@@ -5,6 +5,12 @@ body {
         "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+h2 {
+    margin: 0;
 }
 
 .primary {
@@ -13,11 +19,11 @@ body {
 
 .primary-bg {
     background-color: $primary;
-    color: #fff;
+    color: $white;
     border-color: $primary;
 }
 
-.btn{
+.btn {
     padding: 0.5rem;
     text-transform: uppercase;
     border-radius: 0.5rem;
@@ -27,42 +33,45 @@ body {
     box-shadow: $box-shadow;
     border: 0.125rem solid $primary;
     background: transparent;
-    &:hover{
+    &:hover {
         background: $primary;
-        color: #000;
+        color: $black;
         transition: 0.3s all ease;
     }
 }
 
+.card {
+    width: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $offwhite;
+    padding: 16px;
+    border-radius: 0.5rem;
+    box-shadow: $box-shadow;
+    box-sizing: border-box;
+}
+
 .App {
-    background-color:$background;
+    background-color: $background;
     max-height: 100vh;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    font-size: calc(0.625rem + 2vmin);
-    color: white;
     &-header {
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 16px;
     }
-    main{
+    main {
         flex: 1;
         overflow: auto;
         display: flex;
         align-items: center;
         flex-flow: column;
-    }
-    .card{
-        width: 60%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background: $offwhite;
-        padding: 16px;
-        border-radius: 0.5rem;
-        box-shadow: $box-shadow;
+        .bottom {
+            width: 100%;
+        }
     }
 }

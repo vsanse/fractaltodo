@@ -10,15 +10,55 @@
     &-pendings,
     &-completed {
         margin: 1rem 0.5rem;
-        padding: 0.5rem;
+        padding: 1rem;
         max-height: 30rem;
         overflow: auto;
         background: $containerbg;
         border: 0.0625rem solid $primary;
         box-shadow: $box-shadow;
         border-radius: 0.5rem;
-        @include md{
+        width: 100%;
+        @include md {
             flex: 1;
+        }
+    }
+    &-card {
+        width: 100%;
+        box-shadow: none;
+        margin-bottom: 1rem;
+        box-shadow: 0 0.625rem 1.25rem 0 rgba(10, 10, 10, 0.45);
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+        .actions {
+            .btn {
+                margin: 0 0.5rem;
+                min-width: 4rem;
+                box-shadow: 0 0.1875rem 0.375rem 0 rgba(78, 137, 255, 0.15);
+                font-weight: 500;
+                &.delete {
+                    border-color: $danger;
+                    color: $danger;
+                    &:hover {
+                        background: $danger;
+                        color: $white;
+                    }
+                }
+                &.edit {
+                    color: $info;
+                    border-color: $info;
+                    &:hover {
+                        background: $info;
+                        color: $white;
+                    }
+                }
+            }
+            &-container {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+            }
         }
     }
 }
