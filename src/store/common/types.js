@@ -1,0 +1,2 @@
+export const TOGGLELOADER = "TOGGLELOADER";
+export const SETDOMAIN = "SETDOMAIN";
