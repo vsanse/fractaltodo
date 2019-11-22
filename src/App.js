@@ -1,17 +1,17 @@
 import React from 'react';
 import "./static/styles/main.scss";
 import Header from './Components/Molecules/Header';
-import AddToDo from './Components/Molecules/AddToDo';
-import Todos from './Components/Molecules/Todos';
+import ToDo from './Components/Organisms/ToDo';
+import AddToDos from './Components/Organisms/AddToDos';
 
 function App() {
   return (
     <div className="App">
         <Header/>
         <main>
-          <AddToDo/>
+          <AddToDos/>
           <section className="bottom">
-            <Todos/>
+            <ToDo/>
           </section>
         </main>
     </div>

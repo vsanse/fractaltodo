@@ -6,6 +6,7 @@
         max-width: 85rem;
         margin-top: 2rem;
         flex-wrap: wrap;
+        align-items: flex-start;
     }
     &-pendings,
     &-completed {
@@ -26,22 +27,28 @@
         width: 100%;
         box-shadow: none;
         margin-bottom: 1rem;
-        box-shadow: 0 0.625rem 1.25rem 0 rgba(10, 10, 10, 0.45);
+        clear: both;
+        padding: 1rem 0;
+        border-top: 1px solid $background;
         &:last-of-type {
             margin-bottom: 0;
+        }
+        p {
+            margin: 0;
         }
         .actions {
             flex: 1;
             display: flex;
             justify-content: flex-end;
+            float: right;
             .btn {
-                margin: 0 0.5rem;
                 min-width: 4rem;
                 box-shadow: 0 0.1875rem 0.375rem 0 rgba(78, 137, 255, 0.15);
                 font-weight: 500;
                 &.delete {
                     border-color: $danger;
                     color: $danger;
+                    margin-right: 0.5rem;
                     &:hover {
                         background: $danger;
                         color: $white;
@@ -66,7 +73,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                h2{
+                h2 {
                     max-width: 70%;
                     overflow: hidden;
                     text-overflow: ellipsis;
@@ -74,5 +81,62 @@
                 }
             }
         }
+    }
+    &-bucket {
+        width: 100%;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        &:last-of-type{
+            margin-bottom: 0;
+        }
+        &-heading {
+            width: 100%;
+            max-width: 100%;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+        &-tasks {
+            width: 100%;
+            max-height: 0;
+            transition: all  0.5s ease;
+            overflow: hidden;
+            cursor: default;
+        }
+        &-title {
+            width: 100%;
+            display: flex;
+            .fa {
+                font-size: 1.5rem;
+                padding: 0 0.5rem;
+            }
+        }
+        &.active{
+            .todo-bucket-tasks{
+                max-height: 20rem;
+                overflow: auto;
+                margin-top: 1rem;
+                transition: all 0.5s ease;
+            }
+        }
+    }
+}
+
+.addTodo{
+    flex-wrap: wrap;
+    @include sm-down {
+        width: calc(100% - 2rem);
+    }
+    .dropdown{
+        width: calc(50% - 1rem);
+        margin-left: 1rem;
+        .input{
+            width: 100%;
+        }
+    }
+    .btn{
+        width: 50%;
+        color: $black;
     }
 }

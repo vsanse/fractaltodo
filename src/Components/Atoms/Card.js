@@ -1,9 +1,13 @@
 import React from 'react'
 
-export default function Card(props){
+const Card = (props)=>{
     return (
-        <div className={props.className? `${props.className} card`: "card"}>
+        <div className={props.className? `${props.className} card`: "card"}
+            onClick={(event)=>props.handleClick?props.handleClick(event):null}
+        >
             {props.children}
         </div>
     )
 }
+
+export default Card;

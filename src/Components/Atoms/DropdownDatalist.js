@@ -14,7 +14,7 @@ const Dropdown_Datalist = props => {
 
 	let optionsToRender = [
 		...options.map((option, index) => (
-			<option key={index} value={index}>
+			<option key={index} value={option}>
 				{option}
 			</option>
 		))
