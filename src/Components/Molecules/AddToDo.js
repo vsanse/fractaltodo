@@ -2,7 +2,7 @@ import React from 'react'
 import Card from '../Atoms/Card'
 import Input from '../Atoms/Input'
 import Button from '../Atoms/Button'
-import Dropdown_Datalist from '../Atoms/DropdownDatalist'
+import DropdownDatalist from '../Atoms/DropdownDatalist'
 
 export default function AddToDo(props){
     return(
@@ -16,9 +16,9 @@ export default function AddToDo(props){
                 inputValue={props.newTodo}
                 inputTitle="Add new todo"
             />
-            <Dropdown_Datalist
+            <DropdownDatalist
                 options={props.buckets}
-                inputPlaceholder="Choose bucket"
+                inputPlaceholder="Add to bucket"
                 handleChange={props.handleChange}
                 inputName="bucket"
                 inputValue={props.newBucket}

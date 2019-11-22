@@ -1,7 +1,8 @@
 export default {
   common: {
     showLoader: false,
-    completedTodo: [],
-    pendingTodo: []
+    completedTodo: {},
+    pendingTodo: {},
+    buckets:[]
   },
 };

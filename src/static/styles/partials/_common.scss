@@ -28,6 +28,11 @@ h2 {
     margin-bottom: 0.5rem;
     box-sizing: border-box;
     border-radius: 0.375rem;
+    &::placeholder{
+        font-size: 0.75rem;
+        font-family: monospace, monospace;
+        letter-spacing: 0;
+    }
 }
 
 .primary {

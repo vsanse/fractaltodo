@@ -8,3 +8,9 @@ export function setCompletedTodo(completedTodo) {
 export function setPendingTodo(pendingTodo) {
     return { type: types.SETPENDINGTODO, pendingTodo }
 }
+export function setBuckets(buckets) {
+    return { type: types.SETBUCKETS, buckets }
+}
+export function addNewBucket(bucket) {
+    return { type: types.ADDNEWBUCKET, bucket }
+}

@@ -17,6 +17,16 @@ export default function commonReducer(state = initialState.common, action) {
                 ...state,
                 pendingTodo: action.pendingTodo
             }
+        case types.SETBUCKETS:
+            return {
+                ...state,
+                buckets: action.buckets
+            }
+        case types.ADDNEWBUCKET:
+            return {
+                ...state,
+                buckets: state.common.buckets.includes(action.bucket)?state.common.buckets:[...state.common.buckets, action.bucket]
+            }
         default:
             return state;
     }

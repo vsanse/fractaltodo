@@ -1,10 +1,22 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useSelector, useDispatch } from "react-redux";
 import AddToDo from "../Molecules/AddToDo";
+import { handleTodo } from '../../services/db';
+import { SETBUCKETS, SETPENDINGTODO } from '../../store/common/types';
 
 export default function AddToDos(props) {
-    const [buckets, setbuckets] = useState(["bucket1", "bucket2"]);
+    const dispatch = useDispatch();
     const [newTodo, setnewTodo] = useState("");
     const [newBucket, setnewBucket] = useState("");
+
+    const useBuckets = () => useSelector(state => state.common.buckets);
+    const buckets = useBuckets();
+
+    const usePendingTodo = ()=> useSelector(state => state.common.pendingTodo);
+    const pendingTodo = usePendingTodo();
+
+    const useCompletedTodo = () => useSelector(state => state.common.completedTodo);
+    const completedTodo = useCompletedTodo();
 
     const handleChange = (event) => {
         if (event.target.name === "todo") {
@@ -16,15 +28,26 @@ export default function AddToDos(props) {
     }
 
     const handleAddTodo = (event) => {
-        let data={}
+        let data={
+            buckets: buckets,
+            completedtodo: completedTodo
+        }
         if (!buckets.includes(newBucket)) {
-            setbuckets([...buckets,newBucket]);
+            console.log(buckets,newBucket)
+            dispatch({type: SETBUCKETS,buckets:[...buckets,newBucket]});
             data.buckets=[...buckets, newBucket]
         }
-        data.todo={
-            newBucket:[newTodo]
+        data.pendingtodo={
+            ...pendingTodo,
+            [newBucket]:pendingTodo[newBucket]?[...pendingTodo[newBucket],newTodo]:[newTodo]
         }
-        console.log(data)
+        dispatch({type: SETPENDINGTODO,pendingTodo:{
+            ...pendingTodo,
+            [newBucket]:pendingTodo[newBucket]?[...pendingTodo[newBucket],newTodo]:[newTodo]
+        }});
+        handleTodo(data)
+        setnewBucket("");
+        setnewTodo("");
     }
 
     return (
