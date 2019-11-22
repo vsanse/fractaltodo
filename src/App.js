@@ -40,7 +40,6 @@ function App() {
 
   return (
     <div className="App">
-<pre>{JSON.stringify(process.env, undefined, 2)}</pre>
         {
           showAuthForm &&
           <Authentication
