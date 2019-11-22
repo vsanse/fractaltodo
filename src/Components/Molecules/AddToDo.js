@@ -10,13 +10,24 @@ export default function AddToDo(props){
             <Input
                 inputClass="input-todo"
                 autoFocus= {false}
+                inputPlaceholder="Add Todo"
+                handleChange={props.handleChange}
+                inputName="todo"
+                inputValue={props.newTodo}
+                inputTitle="Add new todo"
             />
             <Dropdown_Datalist
                 options={props.buckets}
+                inputPlaceholder="Choose bucket"
+                handleChange={props.handleChange}
+                inputName="bucket"
+                inputValue={props.newBucket}
+                inputTitle="Choose or add bucket"
             />
             <Button
                 btnLabel={"ADD"}
                 btnClass="primary-bg"
+                handleClick={props.handleAddTodo}
             />
         </Card>
     )
