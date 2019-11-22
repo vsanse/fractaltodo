@@ -37,8 +37,25 @@ export default function Todos(props) {
                 </Card>
             </TodoContainer>
             <TodoContainer className={"todo-completed"}>
-                <Card className="todo-bucket completed">
-                    <h2 className="todo-bucket-heading">Bucket1</h2>
+            <Card className="todo-bucket pendings 1"  handleClick={props.handleActiveBucket}>
+                    <div className="todo-bucket-title">
+                        <h2 className="todo-bucket-heading">Bucket1</h2>
+                        <i className="fa fa-angle-down" aria-hidden="true" ></i>
+                    </div>
+                    <div className="todo-bucket-tasks">
+                        <TodoCard />
+                        <TodoCard />
+                        <TodoCard />
+                        <TodoCard />
+                        <TodoCard />
+                        <TodoCard />
+                    </div>
+                </Card>
+                <Card className="todo-bucket pendings 2" handleClick={props.handleActiveBucket}>
+                    <div className="todo-bucket-title">
+                        <h2 className="todo-bucket-heading">Bucket1</h2>
+                        <i className="fa fa-angle-down" aria-hidden="true" ></i>
+                    </div>
                     <div className="todo-bucket-tasks">
                         <TodoCard />
                         <TodoCard />
