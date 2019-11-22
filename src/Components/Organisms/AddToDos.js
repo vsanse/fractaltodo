@@ -1,23 +1,10 @@
 import React, { useState } from 'react';
-import { useSelector, useDispatch } from "react-redux";
 import AddToDo from "../Molecules/AddToDo";
 import { handleTodo } from '../../services/db';
-import { SETBUCKETS, SETPENDINGTODO } from '../../store/common/types';
 
 export default function AddToDos(props) {
-    const dispatch = useDispatch();
     const [newTodo, setnewTodo] = useState("");
     const [newBucket, setnewBucket] = useState("");
-
-    const useBuckets = () => useSelector(state => state.common.buckets);
-    const buckets = useBuckets();
-
-    const usePendingTodo = ()=> useSelector(state => state.common.pendingTodo);
-    const pendingTodo = usePendingTodo();
-
-    const useCompletedTodo = () => useSelector(state => state.common.completedTodo);
-    const completedTodo = useCompletedTodo();
-
     const handleChange = (event) => {
         if (event.target.name === "todo") {
             setnewTodo(event.target.value)
@@ -29,22 +16,24 @@ export default function AddToDos(props) {
 
     const handleAddTodo = (event) => {
         let data={
-            buckets: buckets,
-            completedtodo: completedTodo
+            buckets: props.todos.buckets,
+            completedtodo: props.todos.completedTodo
         }
-        if (!buckets.includes(newBucket)) {
-            console.log(buckets,newBucket)
-            dispatch({type: SETBUCKETS,buckets:[...buckets,newBucket]});
-            data.buckets=[...buckets, newBucket]
+        if (!props.todos.buckets.includes(newBucket)) {
+            data.buckets=[...props.todos.buckets, newBucket]
         }
         data.pendingtodo={
-            ...pendingTodo,
-            [newBucket]:pendingTodo[newBucket]?[...pendingTodo[newBucket],newTodo]:[newTodo]
+            ...props.todos.pendingTodo,
+            [newBucket]:props.todos.pendingTodo[newBucket]?[...props.todos.pendingTodo[newBucket],newTodo]:[newTodo]
         }
-        dispatch({type: SETPENDINGTODO,pendingTodo:{
-            ...pendingTodo,
-            [newBucket]:pendingTodo[newBucket]?[...pendingTodo[newBucket],newTodo]:[newTodo]
-        }});
+        props.settodos({
+            ...props.todos,
+            buckets:data.buckets,
+            pendingTodo: {
+                ...props.todos.pendingTodo,
+            [newBucket]:props.todos.pendingTodo[newBucket]?[...props.todos.pendingTodo[newBucket],newTodo]:[newTodo]
+            }
+        })
         handleTodo(data)
         setnewBucket("");
         setnewTodo("");
@@ -52,7 +41,7 @@ export default function AddToDos(props) {
 
     return (
         <AddToDo
-            buckets={buckets}
+            buckets={props.todos.buckets}
             newTodo={newTodo}
             newBucket={newBucket}
             handleChange={handleChange}

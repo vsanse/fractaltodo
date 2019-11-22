@@ -1,22 +1,9 @@
 import React from 'react'
 import Todos from '../Molecules/Todos';
-import { useSelector, useDispatch } from "react-redux";
 import { getClosestParent } from '../../tools/helper';
 import { handleTodo } from '../../services/db';
-import { SETCOMPLETEDTODO, SETPENDINGTODO, SETBUCKETS } from '../../store/common/types';
 
 export default function ToDo(props) {
-
-    const dispatch = useDispatch();
-
-    const useBuckets = () => useSelector(state => state.common.buckets);
-    const buckets = useBuckets();
-
-    const usePendingTodo = () => useSelector(state => state.common.pendingTodo);
-    const pendingTodo = usePendingTodo();
-
-    const useCompletedTodo = () => useSelector(state => state.common.completedTodo);
-    const completedTodo = useCompletedTodo();
 
     const handleActiveBucket = (event) => {
         if (event.target.classList.contains('fa-angle-down') ||
@@ -27,104 +14,87 @@ export default function ToDo(props) {
     }
 
     const handleComplete = (bucket, task) => {
-        let newPendings = { ...pendingTodo };
-        let newCompleted = { ...completedTodo };
-        let newbuckets = [...buckets];
-        let updatedBucket = pendingTodo[bucket].filter(function (value, index, arr) {
+        let newTodos = { ...props.todos};
+        let updatedBucket = props.todos.pendingTodo[bucket].filter(function (value, index, arr) {
             return value !== task;
         });
         if (updatedBucket.length === 0) {
-            delete newPendings[bucket];
-            newbuckets=buckets.filter((value)=> value!==bucket)
+            delete newTodos.pendingTodo[bucket];
+            newTodos.buckets=props.todos.buckets.filter((value)=> value!==bucket)
         }
         else{
-            newPendings[bucket] = updatedBucket;
+            newTodos.pendingTodo[bucket] = updatedBucket;
         }
-        newCompleted[bucket] = newCompleted[bucket] ? [...newCompleted[bucket], task] : [task];
-        dispatch({ type: SETPENDINGTODO, pendingTodo: newPendings });
-        dispatch({ type: SETCOMPLETEDTODO, completedTodo: newCompleted });
-        dispatch({type: SETBUCKETS,buckets:newbuckets});
+
+        newTodos.completedTodo[bucket] = newTodos.completedTodo[bucket] ? [...newTodos.completedTodo[bucket], task] : [task];
+        props.settodos(newTodos);
         handleTodo({
-            buckets: newbuckets,
-            completedtodo: newCompleted,
-            pendingtodo: newPendings
+            buckets: newTodos.buckets,
+            completedtodo: newTodos.completedTodo,
+            pendingtodo: newTodos.pendingTodo
         })
     }
 
     const handleIncomplete = (bucket, task) => {
-        let newPendings = { ...pendingTodo };
-        let newCompleted = { ...completedTodo };
-        let newbuckets = [...buckets];
-        let updatedBucket = completedTodo[bucket].filter(function (value, index, arr) {
+        let newTodos = { ...props.todos};
+        let updatedBucket = props.todos.completedTodo[bucket].filter(function (value, index, arr) {
             return value !== task;
         });
         if (updatedBucket.length === 0) {
-            delete newCompleted[bucket]
-            newbuckets=buckets.filter((value)=> value!==bucket)
+            delete newTodos.completedTodo[bucket]
+            newTodos.buckets=props.todos.buckets.filter((value)=> value!==bucket)
         }
         else{
-            newCompleted[bucket] = updatedBucket;
+            newTodos.completedTodo[bucket] = updatedBucket;
         }
-        newPendings[bucket] = newPendings.hasOwnProperty(bucket) ? [...newPendings[bucket], task] : [task];
-        dispatch({ type: SETPENDINGTODO, pendingTodo: newPendings });
-        dispatch({ type: SETCOMPLETEDTODO, completedTodo: newCompleted });
-        dispatch({type: SETBUCKETS,buckets:newbuckets});
+        newTodos.pendingTodo[bucket] = newTodos.pendingTodo[bucket] ? [...newTodos.pendingTodo[bucket], task] : [task];
+        props.settodos(newTodos);
         handleTodo({
-            buckets: newbuckets,
-            completedtodo: newCompleted,
-            pendingtodo: newPendings
+            buckets: newTodos.buckets,
+            completedtodo: newTodos.completedTodo,
+            pendingtodo: newTodos.pendingTodo
         })
     }
 
     const handleDelete = (bucket, task, type) => {
-        let newbuckets = [...buckets];
+        let newTodos = { ...props.todos};
         if (type === "completed") {
-            let newCompleted = { ...completedTodo };
-            let updatedBucket = completedTodo[bucket].filter(function (value, index, arr) {
+            let updatedBucket = props.todos.completedTodo[bucket].filter(function (value, index, arr) {
                 return value !== task;
             });
             if (updatedBucket.length === 0) {
-                delete newCompleted[bucket];
-                newbuckets=buckets.filter((value)=> value!==bucket);
+                delete newTodos.completedTodo[bucket]
+                newTodos.buckets=props.todos.buckets.filter((value)=> value!==bucket)
             }
             else{
-                newCompleted[bucket] = updatedBucket;
+                newTodos.completedTodo[bucket] = updatedBucket;
             }
-            dispatch({ type: SETCOMPLETEDTODO, completedTodo: newCompleted });
-            dispatch({type: SETBUCKETS,buckets:newbuckets});
-            handleTodo({
-                buckets: newbuckets,
-                completedtodo: newCompleted,
-                pendingtodo: pendingTodo
-            })
         }
         else {
-            let newPendings = { ...pendingTodo };
-            let updatedBucket = pendingTodo[bucket].filter(function (value, index, arr) {
+            let updatedBucket = props.todos.pendingTodo[bucket].filter(function (value, index, arr) {
                 return value !== task;
             });
             if (updatedBucket.length === 0) {
-                delete newPendings[bucket];
-                newbuckets=buckets.filter((value)=> value!==bucket);
+                delete newTodos.pendingTodo[bucket];
+                newTodos.buckets=props.todos.buckets.filter((value)=> value!==bucket)
             }
             else{
-                newPendings[bucket] = updatedBucket;
+                newTodos.pendingTodo[bucket] = updatedBucket;
             }
-            dispatch({ type: SETPENDINGTODO, pendingTodo: newPendings });
-            dispatch({type: SETBUCKETS,buckets:newbuckets});
-            handleTodo({
-                buckets: newbuckets,
-                completedtodo: completedTodo,
-                pendingtodo: newPendings
-            })
         }
+        props.settodos(newTodos);
+        handleTodo({
+            buckets: newTodos.buckets,
+            completedtodo: newTodos.completedTodo,
+            pendingtodo: newTodos.pendingTodo
+        })
     }
 
     return (
         <Todos
             handleActiveBucket={handleActiveBucket}
-            pendingTodo={pendingTodo}
-            completedTodo={completedTodo}
+            pendingTodo={props.todos.pendingTodo}
+            completedTodo={props.todos.completedTodo}
             handleComplete={handleComplete}
             handleIncomplete={handleIncomplete}
             handleDelete={handleDelete}

@@ -3,14 +3,9 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import 'font-awesome/css/font-awesome.min.css';
 import * as serviceWorker from './serviceWorker';
-import { Provider } from "react-redux";
-import { configureStore } from "./store";
 
-const store = configureStore()
 const app = (
-    <Provider store={store}>
-        <App />
-    </Provider>
+    <App />
 );
 
 ReactDOM.render(app, document.getElementById('root'));

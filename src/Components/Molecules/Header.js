@@ -9,6 +9,8 @@ export default function Header(props) {
                 <Button
                     btnLabel={"signin"}
                     btnClass={"primary-bg"}
+                    handleClick={props.setshowAuthForm}
+                    args={[true]}
                 />
             </div>
         </header>
