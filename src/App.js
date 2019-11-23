@@ -18,6 +18,8 @@ function App() {
   });
 
   useEffect(() => {
+    doSignInWithEmailAndPassword("test@gmail.com","test1234")
+    .then((user)=>console.log(user))
     auth.onAuthStateChanged(user=>{
       user?setisLoggedIn(true):setisLoggedIn(false);
     })
@@ -30,9 +32,6 @@ function App() {
           completedTodo: (data && data.completedtodo)||{},
           pendingTodo: (data && data.pendingtodo)||{}
         })
-        // dispatch({type: SETBUCKETS,buckets:(data && data.buckets)||[]});
-        // dispatch({type: SETCOMPLETEDTODO,completedTodo:(data && data.completedtodo)||[]});
-        // dispatch({type: SETPENDINGTODO,pendingTodo:(data && data.pendingtodo)||[]});
       })
     }
   }, [isLoggedIn]);
