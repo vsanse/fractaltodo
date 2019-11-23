@@ -7,7 +7,7 @@ export default function Signup(props) {
     return (
         <Card className="auth-form-wrapper" >
             <div className="close-modal">
-                <p onClick={props.closeModal}><i class="fa fa-times-circle-o" aria-hidden="true"></i></p>
+                <p onClick={props.closeModal}><i className="fa fa-times-circle-o" aria-hidden="true"></i></p>
             </div>
             <form className="auth-form" onSubmit={props.handleSignUp}>
                 <label>

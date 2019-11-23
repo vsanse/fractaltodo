@@ -9,7 +9,7 @@ export default function EditTodo(props) {
         <ModalBox>
             <Card className="edit-todo-wrapper">
                 <div className="close-modal">
-                    <p onClick={props.closeModal}><i class="fa fa-times-circle-o" aria-hidden="true"></i></p>
+                    <p onClick={props.closeModal}><i className="fa fa-times-circle-o" aria-hidden="true"></i></p>
                 </div>
                 <form onSubmit={(event) => props.handleSubmit(event,props.bucket, props.task, props.type, props.idx)}>
                     <Input

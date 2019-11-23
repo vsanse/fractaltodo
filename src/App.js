@@ -8,6 +8,7 @@ import { doSignOut } from './services/auth';
 import { getTodo } from './services/db';
 import { auth } from './firebase';
 import Authentication from './Components/Organisms/Authentication';
+import Button from './Components/Atoms/Button';
 
 function App() {
   const [isLoggedIn, setisLoggedIn] = useState(false);
@@ -54,7 +55,7 @@ function App() {
     <div className="App">
       <Notifications />
       {
-        showAuthForm &&
+        (showAuthForm && !isLoggedIn) &&
         <Authentication
           setshowAuthForm={setshowAuthForm}
         />
@@ -65,16 +66,30 @@ function App() {
         handleLogout={handleLogout}
       />
       <main>
-        <AddToDos
-          todos={todos}
-          settodos={settodos}
-        />
-        <section className="bottom">
-          <ToDo
-            todos={todos}
-            settodos={settodos}
-          />
-        </section>
+        {
+          isLoggedIn ?
+            <>
+              <AddToDos
+                todos={todos}
+                settodos={settodos}
+              />
+              <section className="bottom">
+                <ToDo
+                  todos={todos}
+                  settodos={settodos}
+                />
+              </section>
+            </> :
+            <div className="LandingPage">
+              <h1>Welcome to FractalTodo.<br /> Last Todo app you will ever need.</h1>
+              <Button
+                btnLabel={"get started"}
+                btnClass={"primary-bg"}
+                handleClick={setshowAuthForm}
+                args={[true]}
+              />
+            </div>
+        }
       </main>
     </div>
   );
