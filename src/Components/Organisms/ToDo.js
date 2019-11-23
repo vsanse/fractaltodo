@@ -148,6 +148,21 @@ export default function ToDo(props) {
         closeModal();
     }
 
+    const handleActiveView=(type)=>{
+        if(type==="completed"){
+            document.querySelector(".pendings-btn").classList.remove("active");
+            document.querySelector(".completed-btn").classList.add("active");
+            document.querySelector(".todo-pendings").classList.remove("active");
+            document.querySelector(".todo-completed").classList.add("active");
+        }
+        else{
+            document.querySelector(".pendings-btn").classList.add("active");
+            document.querySelector(".completed-btn").classList.remove("active");
+            document.querySelector(".todo-pendings").classList.add("active");
+            document.querySelector(".todo-completed").classList.remove("active");
+        }
+    }
+
     return (
         <>
             <Todos
@@ -158,6 +173,7 @@ export default function ToDo(props) {
                 handleIncomplete={handleIncomplete}
                 handleDelete={handleDelete}
                 handleShowEdit={handleShowEdit}
+                handleActiveView={handleActiveView}
             />
             {
                 showEdit.status &&

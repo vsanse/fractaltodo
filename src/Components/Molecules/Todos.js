@@ -2,11 +2,26 @@ import React from 'react'
 import TodoContainer from '../Atoms/TodoContainer'
 import TodoCard from './TodoCard'
 import Card from '../Atoms/Card'
+import Button from '../Atoms/Button'
 
 export default function Todos(props) {
     return (
         <div className="todo-wrapper">
-            <TodoContainer className={"todo-pendings"}>
+            <div className="todo-small-actions">
+                <Button
+                    btnLabel={"Pendings"}
+                    btnClass={"primary-bg pendings-btn active"}
+                    handleClick={props.handleActiveView}
+                    args={["pending"]}
+                />
+                <Button
+                    btnLabel={"Completed"}
+                    btnClass={"primary-bg completed-btn"}
+                    handleClick={props.handleActiveView}
+                    args={["completed"]}
+                />
+            </div>
+            <TodoContainer className={"todo-pendings active"}>
                 <h2 className="todo-wrapper-title">Pending</h2>
                 {
                     props.pendingTodo && Object.keys(props.pendingTodo).length > 0?

@@ -34,8 +34,13 @@
         box-shadow: $box-shadow;
         border-radius: 0.5rem;
         width: 100%;
+        display: none;
+        &.active{
+            display: block;
+        }
         @include md {
             flex: 1;
+            display: block;
         }
     }
     &-card {
@@ -152,6 +157,22 @@
             }
         }
     }
+    &-small-actions{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        @include md{
+            display: none;
+        }
+        .btn{
+            border-radius: 0;
+            &.active{
+                background: $primary;
+                color: $black;
+            }
+        }
+    }
 }
 
 .addTodo {
@@ -194,3 +215,5 @@
         }
     }
 }
+
+
