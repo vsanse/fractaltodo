@@ -42,6 +42,7 @@ export default function Signin(props) {
                     btnLabel={"Signin"}
                     btnClass="primary-bg auth-form-btn"
                     btnType="submit"
+                    isLoading={props.isLoading}
                 />
                 {
                     props.error.status &&

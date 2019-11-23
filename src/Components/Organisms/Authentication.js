@@ -26,6 +26,7 @@ export default function Authentication(props) {
         status: false,
         msg: ""
     });
+    const [isLoading, setisLoading] = useState(false);
 
     const handleChange=(event)=>{
         if(event.target.name==="email"){
@@ -39,6 +40,7 @@ export default function Authentication(props) {
     const handleSignIn = (event) => {
         event.preventDefault();
         event.stopPropagation();
+        setisLoading(true)
         doSignInWithEmailAndPassword(email, password)
             .then(authUser => {
                 notify.show('Logged in successfully', 'success', 2000);
@@ -49,6 +51,7 @@ export default function Authentication(props) {
                     status: false,
                     msg: ""
                 })
+                setisLoading(false);
             })
             .catch(error => {
                 switch (error.code) {
@@ -77,12 +80,14 @@ export default function Authentication(props) {
                             msg: error.message
                         })
                 }
+                setisLoading(false)
             })
     }
 
     const handleSignUp = (event) =>{
         event.preventDefault();
         event.stopPropagation();
+        setisLoading(true)
         doCreateUserWithEmailAndPassword(email, password)
         .then(()=>{
             notify.show('Registered successfully', 'success', 2000);
@@ -94,6 +99,7 @@ export default function Authentication(props) {
                 msg: ""
             })
             uploadUserData();
+            setisLoading(false)
         })
         .catch(error=>{
             switch (error.code) {
@@ -122,6 +128,7 @@ export default function Authentication(props) {
                         msg: error.message
                     })
             }
+            setisLoading(false)
         })
     }
 
@@ -149,6 +156,7 @@ export default function Authentication(props) {
                      handleChange={handleChange}
                      handleActiveForm={handleActiveForm}
                      closeModal={closeModal}
+                     isLoading = {isLoading}
                     /> : 
                     <Signup 
                         email={email}
@@ -158,6 +166,7 @@ export default function Authentication(props) {
                         handleChange={handleChange}
                         handleActiveForm={handleActiveForm}
                         closeModal={closeModal}
+                        isLoading = {isLoading}
                    />
             }
         </ModalBox>
