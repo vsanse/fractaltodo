@@ -69,6 +69,14 @@ h2 {
         color: $black;
         transition: 0.3s all ease;
     }
+    &.logout{
+        color: $white;
+        border: 0.125rem solid $danger;
+        box-shadow: $box-shadow-danger;
+        &:hover {
+            background: $danger;
+        }
+    }
 }
 
 .card {

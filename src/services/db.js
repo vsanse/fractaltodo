@@ -7,9 +7,7 @@ const endPoints = {
 //upload user data
 export const uploadUserData = () => {
     db.ref(`/${endPoints.USER}/${auth.currentUser.uid}`).set({
-        completedtodo: {},
-        pendingtodo: {},
-        buckets:{}
+        dummy:"dummy"
     })
 }
 

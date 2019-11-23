@@ -6,12 +6,20 @@ export default function Header(props) {
         <header className="App-header">
             <div className="logo primary"> FractalTODO</div>
             <div className="signup">
-                <Button
-                    btnLabel={"signin"}
-                    btnClass={"primary-bg"}
-                    handleClick={props.setshowAuthForm}
-                    args={[true]}
-                />
+                {
+                    props.isLoggedIn?
+                    <Button
+                        btnLabel={"logout"}
+                        btnClass={"logout"}
+                        handleClick={props.handleLogout}
+                    />:
+                    <Button
+                        btnLabel={"signin"}
+                        btnClass={"primary-bg"}
+                        handleClick={props.setshowAuthForm}
+                        args={[true]}
+                    />
+                }
             </div>
         </header>
     )
