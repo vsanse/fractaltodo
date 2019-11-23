@@ -176,12 +176,12 @@
 }
 
 .addTodo {
-    &-form {
+    form {
         width: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-       
+        flex-wrap: wrap;
       }
     padding-top: 2.5rem;
     @include sm-down {
