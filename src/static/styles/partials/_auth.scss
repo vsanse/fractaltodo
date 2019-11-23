@@ -6,6 +6,7 @@
     &-wrapper{
         width: 80%;
         max-width: 60rem;
+        flex-flow: column;
         .error-span{
             color: $danger;
             margin: 1rem 0 0.5rem;

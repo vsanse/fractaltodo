@@ -16,7 +16,8 @@ export default function TodoCard(props) {
                     btnLabel={<><i className="fa fa-pencil" aria-hidden="true"></i></>}
                     btnClass={"edit"}
                     btnTitle="Edit"
-                    
+                    handleClick={props.handleShowEdit}
+                    args={[props.bucket,props.todo,props.type, props.idx]}
                 />
                 <Button
                     btnLabel={<>{props.iscomplete?<i className="fa fa-exclamation" aria-hidden="true"></i>:<i className="fa fa-check-circle" aria-hidden="true"></i>}</>}

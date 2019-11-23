@@ -41,7 +41,20 @@ h2 {
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
     background: rgba(0, 0, 0, 0.7098039215686275);
+    z-index: 100;
+    .close-modal{
+        align-self: flex-end;
+        p{
+            margin: 0 0 0.5rem;
+            color: $danger;
+            font-size: 1.5rem;
+        }
+    }
 }
 
 .primary {

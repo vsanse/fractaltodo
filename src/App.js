@@ -4,8 +4,8 @@ import "./static/styles/main.scss";
 import Header from './Components/Molecules/Header';
 import ToDo from './Components/Organisms/ToDo';
 import AddToDos from './Components/Organisms/AddToDos';
-import { doCreateUserWithEmailAndPassword, doSignInWithEmailAndPassword, doSignOut } from './services/auth';
-import { uploadUserData, getTodo } from './services/db';
+import { doSignOut } from './services/auth';
+import { getTodo } from './services/db';
 import { auth } from './firebase';
 import Authentication from './Components/Organisms/Authentication';
 

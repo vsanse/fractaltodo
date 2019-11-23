@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { notify } from 'react-notify-toast';
 import ModalBox from '../Atoms/ModalBox';
 import Signin from '../Molecules/Signin';
-import { auth } from '../../firebase';
 import Signup from '../Molecules/Signup';
 import { doSignInWithEmailAndPassword, doCreateUserWithEmailAndPassword } from '../../services/auth';
 import { uploadUserData } from '../../services/db';
@@ -134,6 +133,10 @@ export default function Authentication(props) {
         setactiveForm(form);
     }
 
+    const closeModal=()=>{
+        props.setshowAuthForm(false)
+    }
+
     return (
         <ModalBox>
             {
@@ -145,6 +148,7 @@ export default function Authentication(props) {
                      handleSignIn={handleSignIn}
                      handleChange={handleChange}
                      handleActiveForm={handleActiveForm}
+                     closeModal={closeModal}
                     /> : 
                     <Signup 
                         email={email}
@@ -153,6 +157,7 @@ export default function Authentication(props) {
                         handleSignUp={handleSignUp}
                         handleChange={handleChange}
                         handleActiveForm={handleActiveForm}
+                        closeModal={closeModal}
                    />
             }
         </ModalBox>

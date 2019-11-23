@@ -26,7 +26,9 @@ export default function Todos(props) {
                                                 todo={todo}
                                                 handleComplete={props.handleComplete}
                                                 handleDelete={props.handleDelete}
+                                                handleShowEdit={props.handleShowEdit}
                                                 type="pending"
+                                                idx={idx}
                                             />
                                         })
                                     }
@@ -60,7 +62,9 @@ export default function Todos(props) {
                                                 iscomplete={true}
                                                 handleIncomplete={props.handleIncomplete}
                                                 handleDelete={props.handleDelete}
+                                                handleShowEdit={props.handleShowEdit}
                                                 type="completed"
+                                                idx={idx}
                                             />
                                         })
                                     }
