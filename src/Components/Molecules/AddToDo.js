@@ -9,7 +9,7 @@ export default function AddToDo(props){
         <Card className="addTodo">
             <Input
                 inputClass="input-todo"
-                autoFocus= {true}
+                autoFocus= {false}
                 inputPlaceholder="Add Todo"
                 handleChange={props.handleChange}
                 inputName="todo"

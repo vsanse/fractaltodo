@@ -28,7 +28,7 @@ export default function Signup(props) {
                     Password:
                     <Input
                         inputClass="auth-form-passwd"
-                        autoFocus={true}
+                        autoFocus={false}
                         inputPlaceholder="Choose password"
                         handleChange={props.handleChange}
                         inputName="password"

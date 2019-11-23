@@ -28,7 +28,7 @@ export default function Signin(props) {
                     Password:
                     <Input
                         inputClass="auth-form-passwd"
-                        autoFocus={true}
+                        autoFocus={false}
                         inputPlaceholder="Enter password"
                         handleChange={props.handleChange}
                         inputName="password"
