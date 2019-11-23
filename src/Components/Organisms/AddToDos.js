@@ -10,7 +10,8 @@ export default function AddToDos(props) {
             setnewTodo(event.target.value)
         }
         else {
-            setnewBucket(event.target.value.trim())
+            var clean = event.target.value.replace(/\s\s+|\./g, " ")
+            setnewBucket(clean);
         }
     }
 
