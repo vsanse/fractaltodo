@@ -82,6 +82,7 @@ function App() {
             </> :
             <div className="LandingPage">
               <h1>Welcome to FractalTodo.<br /> Last Todo app you will ever need.</h1>
+              <p>Get started in just 10 seconds</p>
               <Button
                 btnLabel={"get started"}
                 btnClass={"primary-bg"}
