@@ -15,6 +15,8 @@ export default function AddToDos(props) {
     }
 
     const handleAddTodo = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         let data={
             buckets: props.todos.buckets,
             completedtodo: props.todos.completedTodo
