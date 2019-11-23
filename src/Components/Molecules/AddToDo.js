@@ -7,9 +7,11 @@ import DropdownDatalist from '../Atoms/DropdownDatalist'
 export default function AddToDo(props){
     return(
         <Card className="addTodo">
+            <form className="addTdo-form" onSubmit={props.handleAddTodo}>
             <Input
                 inputClass="input-todo"
                 autoFocus= {false}
+                inputRequired= {true}
                 inputPlaceholder="Add Todo"
                 handleChange={props.handleChange}
                 inputName="todo"
@@ -21,14 +23,16 @@ export default function AddToDo(props){
                 inputPlaceholder="Add to bucket"
                 handleChange={props.handleChange}
                 inputName="bucket"
+                inputRequired= {true}
                 inputValue={props.newBucket}
                 inputTitle="Choose or add bucket"
             />
             <Button
                 btnLabel={"ADD"}
                 btnClass="primary-bg"
-                handleClick={props.handleAddTodo}
+                btnType="submit"
             />
+            </form>
         </Card>
     )
 }
