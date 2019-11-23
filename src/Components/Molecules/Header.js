@@ -4,7 +4,7 @@ import Button from '../Atoms/Button'
 export default function Header(props) {
     return (
         <header className="App-header">
-            <div className="logo primary"> FractalTODO</div>
+            <div className="logo primary"><strong>FractalTodo</strong></div>
             <div className="signup">
                 {
                     props.isLoggedIn?
