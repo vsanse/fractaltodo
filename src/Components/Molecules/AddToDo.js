@@ -20,7 +20,7 @@ export default function AddToDo(props){
             />
             <DropdownDatalist
                 options={props.buckets}
-                inputPlaceholder="Add to bucket"
+                inputPlaceholder="Add/Choose bucket"
                 handleChange={props.handleChange}
                 inputName="bucket"
                 inputRequired= {true}
