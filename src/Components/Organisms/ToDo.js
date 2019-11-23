@@ -58,7 +58,7 @@ export default function ToDo(props) {
         });
         if (updatedBucket.length === 0) {
             delete newTodos.pendingTodo[bucket];
-            newTodos.buckets = props.todos.buckets.filter((value) => value !== bucket)
+            // newTodos.buckets = props.todos.buckets.filter((value) => value !== bucket)
         }
         else {
             newTodos.pendingTodo[bucket] = updatedBucket;
@@ -80,7 +80,7 @@ export default function ToDo(props) {
         });
         if (updatedBucket.length === 0) {
             delete newTodos.completedTodo[bucket]
-            newTodos.buckets = props.todos.buckets.filter((value) => value !== bucket)
+            // newTodos.buckets = props.todos.buckets.filter((value) => value !== bucket)
         }
         else {
             newTodos.completedTodo[bucket] = updatedBucket;
