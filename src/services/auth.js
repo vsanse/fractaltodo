@@ -1,5 +1,6 @@
-import { auth } from "../firebase";
+import { auth, gProvider } from "../firebase";
 import { notify } from 'react-notify-toast';
+import { uploadUserData } from "./db";
 
 // Sign Up
 export const doCreateUserWithEmailAndPassword = (email, password) =>
@@ -19,3 +20,11 @@ export const getCurrentUser = () => {
   return auth.currentUser;
 }
 
+
+export const SingInWithGoogle = () => {
+  auth.signInWithPopup(gProvider)
+    .then((result) => {
+      const user = result.user;
+      uploadUserData();
+    });
+}

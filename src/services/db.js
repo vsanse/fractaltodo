@@ -7,7 +7,7 @@ const endPoints = {
 //upload user data
 export const uploadUserData = () => {
     db.ref(`/${endPoints.USER}/${auth.currentUser.uid}`).set({
-        dummy:"dummy"
+        registered:true
     })
 }
 

@@ -38,12 +38,21 @@ export default function Signin(props) {
                         inputRequired={true}
                     />
                 </label>
-                <Button
-                    btnLabel={"Signin"}
-                    btnClass="primary-bg auth-form-btn"
-                    btnType="submit"
-                    isLoading={props.isLoading}
-                />
+                <div className="auth-form-actions">
+                    <Button
+                        btnLabel={"Signin"}
+                        btnClass="primary-bg auth-form-btn"
+                        btnType="submit"
+                        isLoading={props.isLoading}
+                    />
+                    <Button
+                        btnLabel={"Signin with google"}
+                        btnClass="primary-bg auth-form-btn google"
+                        btnType="button"
+                        handleClick={props.handleGoogleSignin}
+                        isLoading={props.isLoading}
+                    />
+                </div>
                 {
                     props.error.status &&
                     <p className="error-span">{props.error.msg}</p>

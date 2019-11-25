@@ -3,7 +3,7 @@ import { notify } from 'react-notify-toast';
 import ModalBox from '../Atoms/ModalBox';
 import Signin from '../Molecules/Signin';
 import Signup from '../Molecules/Signup';
-import { doSignInWithEmailAndPassword, doCreateUserWithEmailAndPassword } from '../../services/auth';
+import { doSignInWithEmailAndPassword, doCreateUserWithEmailAndPassword, SingInWithGoogle } from '../../services/auth';
 import { uploadUserData } from '../../services/db';
 
 export default function Authentication(props) {
@@ -144,6 +144,10 @@ export default function Authentication(props) {
         props.setshowAuthForm(false)
     }
 
+    const handleGoogleSignin = ()=>{
+        SingInWithGoogle();
+    }
+
     return (
         <ModalBox>
             {
@@ -157,6 +161,7 @@ export default function Authentication(props) {
                      handleActiveForm={handleActiveForm}
                      closeModal={closeModal}
                      isLoading = {isLoading}
+                     handleGoogleSignin={handleGoogleSignin}
                     /> : 
                     <Signup 
                         email={email}
@@ -167,6 +172,7 @@ export default function Authentication(props) {
                         handleActiveForm={handleActiveForm}
                         closeModal={closeModal}
                         isLoading = {isLoading}
+                        handleGoogleSignin={handleGoogleSignin}
                    />
             }
         </ModalBox>

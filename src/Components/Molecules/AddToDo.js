@@ -26,6 +26,7 @@ export default function AddToDo(props){
                 inputRequired= {true}
                 inputValue={props.newBucket}
                 inputTitle="Choose or add bucket"
+                autoComplete={false}
             />
             <Button
                 btnLabel={"ADD"}

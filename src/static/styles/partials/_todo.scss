@@ -183,6 +183,7 @@
         flex-wrap: wrap;
       }
     padding-top: 2.5rem;
+    max-width: 60rem;
     @include sm-down {
         width: calc(100% - 2rem);
     }

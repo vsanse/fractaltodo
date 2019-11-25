@@ -10,6 +10,7 @@ import React from "react";
 const DropdownDatalist = props => {
 	let required = props.inputRequired ? props.inputRequired : false, //
 		autoFocus = props.inputAutoFocus ? props.inputAutoFocus : false, // Autofocus set or not.
+		autoComplete= props.autoComplete?"":"off",
 		options = props.options ? props.options : []; // If no options are passed.
 
 	let optionsToRender = [
@@ -31,6 +32,7 @@ const DropdownDatalist = props => {
 				placeholder={props.inputPlaceholder}
 				required={required}
 				autoFocus={autoFocus}
+				autoComplete={autoComplete}
 				list={props.inputClass ? props.inputClass + "-list" : "input-list"}
 			/>
 
